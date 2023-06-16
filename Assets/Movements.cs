@@ -21,6 +21,7 @@ public class Movements : MonoBehaviour
     private bool pause = false;
     private float fixedDeltaTime;
     public GameObject bird;
+    public bool birdfly = false;
    
 
     //timer
@@ -117,16 +118,28 @@ public class Movements : MonoBehaviour
             timerText.text = currentTime.ToString("0.000" + "s");
 
 
+            //                                                                                                            not sure if works here
             if (currentTime >= 10)
             {
-                if (bird.transform.localPosition.x < -75)
-                {
-                    bird.transform.Translate(new Vector3(-8 * Time.deltaTime, 5 * Time.deltaTime, 0));
-                }
-                else
-                    bird.transform.Translate(new Vector3(-10 * Time.deltaTime, 0, 0));
+                birdfly = true;
+            //elseif(currentTime < 15)
+            
+                    birdfly = false;
+                
+            }
 
-                //if ()
+            if (birdfly == true)
+            {
+                if (currentTime >= 10)
+                {
+                    if (bird.transform.localPosition.x < -75)
+                    {
+                        bird.transform.Translate(new Vector3(-8 * Time.deltaTime, 5 * Time.deltaTime, 0));
+                    }
+                    else
+                        bird.transform.Translate(new Vector3(-10 * Time.deltaTime, 0, 0));
+
+                }
             }
 
 
